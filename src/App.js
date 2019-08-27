@@ -27,16 +27,34 @@ class App extends React.Component {
   addProduct = () => {
     const { product } = this.state;
     fetch(
-      `http://localhost:4000/products/add?name=${product.name}&price=${
-        product.price
-      }`
+      `http://localhost:4000/products/add?name=${product.name}&price=${product.price}`
     )
       .then(this.getProducts)
       .catch(err => console.error(err));
   };
 
+  editProduct = id => {
+    const { product } = this.state;
+    console.log(this.state.products);
+    fetch(
+      `http://localhost:4000/products/edit/${id}?name=${product.name}&price=${product.price}`
+    )
+      .then(this.getProducts)
+      .catch(err => console.error(err));
+  };
+
+  deleteProduct = id => {
+    fetch(`http://localhost:4000/products/delete/${id}`)
+      .then(this.getProducts)
+      .catch(err => console.error(err));
+  };
+
   renderProduct = ({ product_id, name, price }) => (
-    <div key={product_id}>{name}</div>
+    <div key={product_id}>
+      product name: {name} Price: {price}
+      <button onClick={() => this.editProduct(product_id)}>Edit</button>
+      <button onClick={() => this.deleteProduct(product_id)}>Delete</button>
+    </div>
   );
 
   render() {
