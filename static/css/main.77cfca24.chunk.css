@@ -1,0 +1,2 @@
+.grid{display:grid;grid-template-columns:repeat(7,1fr);border-top:1x solid #000;border-right:1px solid #000}.grid>span{padding:8px 4px;border-left:1px solid #000;border-bottom:1px solid #000}.grid:first-of-type{border-top:1px solid #000}
+/*# sourceMappingURL=main.77cfca24.chunk.css.map */
